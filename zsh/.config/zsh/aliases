@@ -1,0 +1,12 @@
+alias v=vim
+
+alias la="ls -A --color=always"
+alias ls="ls --color=always"
+
+alias i3config="vim ~/.config/i3/config"
+alias zshconfig="vim ~/.zshrc"
+alias zshaliases="vim ~/.config/zsh/aliases"
+alias zshreload="source ~/.zshrc"
+alias urxvtconfig="vim ~/.Xresources"
+alias urxvtreload="xrdb ~/.Xresources"
+alias vimconfig="vim .config/nvim/init.vim" 

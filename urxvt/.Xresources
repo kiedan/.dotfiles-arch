@@ -10,9 +10,8 @@ URxvt*imLocale: en_US.UTF-8
 URxvt*termName: rxvt-unicode-256color
 URxvt*buffered: false
 URxvt.intensityStyles: false
-!! URxvt.font: xft:Mononoki Nerd Font:size=14
 
-URxvt.font: xft:Hack Nerd Font:size=12
+URxvt.font: xft:Hack Nerd Font:size=16, xft:FontAwesome:pixelsize=10  
 
 URxvt.saveLines: 2000
 URxvt.scrollBar: false
@@ -25,10 +24,10 @@ URxvt*crollTtyKeypress: true
 URxvt.internalBorder: 30
 
 !! Extensions
-URxvt.perl-ext-common: default,matcher,keyboard-select,
-!! keyboard-select:
+
+! make fontsize changeable with commun shortcuts 
+urxvt.perl-ext-common: default,tabbed,matcher,resize-font,-tabbed, url-picker, keyboard-select
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!! Matcher
 URxvt.url-launcher:	urxvt -e lynx -cfg=~/.lynx.cfg -lss=~/.lynx.lss
 URxvt.matcher.button: 1
 URxvt*depth: 32
