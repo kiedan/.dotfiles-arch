@@ -1,0 +1,5 @@
+alt + shift + 4
+  maim --select | tee ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S ).png | xclip -selection clipboard -t image/png 
+
+alt + shift + 5
+  maim ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M ).png

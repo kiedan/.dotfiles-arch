@@ -18,9 +18,12 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=5000
+SAVEHIST=5000
 HISTFILE=~/.cache/zsh/history
+setopt    appendhistory     #Append history to the history file (no overwriting)
+setopt    sharehistory      #Share history across terminals
+setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
 
 # Use modern completion system
 autoload -Uz compinit
@@ -47,6 +50,9 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #Path
 export SPICETIFY_INSTALL="/home/dan/spicetify-cli"
 export PATH="$SPICETIFY_INSTALL:$PATH"
+
+#path+='~/Applications/LibreSprite_7145e7aa49c6c09e18af14c86341a125.AppImage'
+#export PATH
 
 # Aliases
 source ~/.config/zsh/aliases

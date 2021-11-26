@@ -11,7 +11,7 @@ URxvt*termName: rxvt-unicode-256color
 URxvt*buffered: false
 URxvt.intensityStyles: false
 
-URxvt.font: xft:Hack Nerd Font:size=16, xft:FontAwesome:pixelsize=10  
+URxvt.font: xft:Hack Nerd Font:size=14, xft:FontAwesome:pixelsize=10  
 
 URxvt.saveLines: 2000
 URxvt.scrollBar: false

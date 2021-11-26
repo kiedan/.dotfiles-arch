@@ -16,12 +16,12 @@ gaps horizontal 630
 
 
 # Only enable outer gaps when there is exactly one container
-smart_gaps inverse_outer
+#smart_gaps inverse_outer
 
 ################# i3-radius #######################
-smart_borders on
-smart_borders no_gaps
-border_radius 15
+#smart_borders on
+#smart_borders no_gaps
+#border_radius 15
 
 
 # Font for window titles. Will also be used by the bar unless a different font

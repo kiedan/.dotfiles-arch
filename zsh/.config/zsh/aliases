@@ -1,12 +1,43 @@
-alias v=vim
-
+# System
+alias sudo='sudo '
 alias la="ls -A --color=always"
 alias ls="ls --color=always"
 
-alias i3config="vim ~/.config/i3/config"
-alias zshconfig="vim ~/.zshrc"
-alias zshaliases="vim ~/.config/zsh/aliases"
+alias ob="startx ~/.xinitrc openbox"
+alias i3="startx ~/.xinitrc i3"
+
+
+# Config
+alias i3config="nvim ~/.config/i3/config"
+alias zshconfig="nvim ~/.zshrc"
+alias aliases="nvim ~/.config/zsh/aliases"
 alias zshreload="source ~/.zshrc"
-alias urxvtconfig="vim ~/.Xresources"
+alias urxvtconfig="nvim ~/.Xresources"
 alias urxvtreload="xrdb ~/.Xresources"
-alias vimconfig="vim .config/nvim/init.vim" 
+alias vimconfig="nvim .config/nvim/init.vim"
+alias polybarreload="pkill -USR1 polybar"
+alias openboxconfig="nvim .config/openbox/rc.xml "
+alias openboxas="nvim .config/openbox/autostart"
+
+# Applications
+alias v=nvim
+
+# Pacman
+alias pacsyu="sudo pacman -Syu"	    # update database & upgrade
+#alias pacsy="sudo pacman -Sy"	    # update only
+#alias pacsu="sudo pacman -Su"	    # upgrade only
+alias pacs="sudo pacman -S"	    # sync (install)
+alias pacss="pacman -Ss"	    # search package
+alias pacr="sudo pacman -R"	    # only remove selected package
+alias pacrsn="sudo pacman -Rsn"      # remove package not leaving orphans
+
+#Yay
+alias yays="yay -S"
+alias yayss="yay -Ss"
+
+#Tools
+alias ipscan="nmap -sP 192.168.2.0/24"
+
+
+# Files and Stuff
+alias sunote="nvim ~/.dotfiles/setupnotes/setup.md"  

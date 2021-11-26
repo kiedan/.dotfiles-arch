@@ -108,9 +108,15 @@ TODO
 - add xmenu application menu to i3 bar @done
 
 
+Nice helpfull Stuff
+-------------------
+great gruvbox rice git: https://github.com/zodd18/Gruvbox (inkluding openbox theme)
 
 NOTES
 ------
 add wallpaper to stow+dotfiles repo @done
 add ~/.urxvt/ext/ to dotfile to include urxvt extensions
 sort extensions in .Xressources and add missing ones to ext folder
+add jgmenu to stow 
+
+

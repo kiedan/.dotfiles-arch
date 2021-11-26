@@ -45,6 +45,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set nonumber
 :set relativenumber
 
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
+
 " Status Line
 " run ':h 'statusline' for options
 " for color-name reference run ':so $VIMRUNTIME/syntax/hitest.vim'  
@@ -183,12 +186,5 @@ endfunction
 " ===========
 
 colorscheme gruvbox
-
-
-"
-"
-"
-"
-"
-"
-"
+" making the terminalbackground match the vim background exactly:
+highlight Normal ctermbg=NONE
