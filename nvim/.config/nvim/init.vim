@@ -1,8 +1,10 @@
-
 " ============
 " Vim settings
 " ============
-
+"
+" set leader key
+let g:mapleader = "\<Space>"
+  
 " Break on whitespace for prose
 autocmd FileType markdown,text :set linebreak
 
@@ -12,43 +14,62 @@ augroup Misc
   autocmd VimResized * exe "normal! \<c-w>="
 augroup END
 
-
-set hidden
-
-" Enable mouse
-set mouse=a
-
-" Show cursorline
-set cursorline
-
-" automatically yank to unnamed register / aka make global copy paste work
-set clipboard=unnamedplus
-
-" Search not cas:e-sensitive when only lower-case chars used
-set incsearch
+set hidden                              " Required to keep multiple buffers open multiple buffers
+set nowrap                              " Display long lines as just one line
+set mouse=a                             " Enable mouse
+set smartindent                         " Makes indenting smart
+set autoindent                          " Good auto indent
+set smartindent                         " Makes indenting smart
+set autoindent                          " Good auto indent
+set clipboard=unnamedplus               " Copy paste between vim and everything else 
+set cursorline                          " Enable highlighting of the current line
+set incsearch                           " Search not cas:e-sensitive when only lower-case chars used
 set ignorecase
 set smartcase
+"set listchars=tab:▸\ ,eol:¬             " Define tab and newline chars with set list
+set undofile                            " Keep undo history
+set scrolloff=5                         " Keep cursor away from edges of screen
+:set number relativenumber              " turn hybrid line numbers on
+:set nu rnu                             " turn hybrid line numbers on
+"set formatoptions-=cro                   " Stop newline continution of comments
+set splitbelow                          " Open horizontal splits below 
+set splitright                          " Open vertical splits to the right 
+set tabstop=2                           " Insert 2 spaces for a tab
+set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
+"set expandtab                           " Converts tabs to spaces
+"set fillchars+=vert:\                   " No vertical divider char
+"set listchars=tab:▸\ ,eol:¬             " Define tab and newline chars with set list
 
-" Define tab and newline chars with set list
-set listchars=tab:▸\ ,eol:¬
 
-" Keep undo history
-set undofile
+" ===========
+" Buffer Keymappings
+" ===========
 
-" Keep cursor away from edges of screen
-set scrolloff=5
+" Mappings to access buffers (don't use "\p" because a
+" delay before pressing "p" would accidentally paste).
+" \l       : list buffers
+" \b \f \g : go back/forward/last-used
+" \1 \2 \3 : go to buffer 1/2/3 etc
+" p>"
+nnoremap <Leader>l :ls<CR>
+nnoremap <Leader>b :bp<CR>
+nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>g :e#<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
 
-" Don't autocomment next line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Show line numbers
-set nonumber
-:set relativenumber
-
-"This unsets the "last search pattern" register by hitting return
-nnoremap <CR> :noh<CR><CR>
-
+" ===========
 " Status Line
+" ===========
+
 " run ':h 'statusline' for options
 " for color-name reference run ':so $VIMRUNTIME/syntax/hitest.vim'  
 set statusline=
@@ -69,26 +90,6 @@ set statusline+=%#DiffText# "color
 set statusline+=\ [%n] "Vim Document Buffer
 
 
-
-" 24-bit color
-" set termguicolors
-
-" No vertical divider char
-set fillchars+=vert:\ 
-
-" Open splits below and vertical splits to the right
-set splitbelow
-set splitright
-
-" Define tab and newline chars with set list
-set listchars=tab:▸\ ,eol:¬
-
-" Two space indent
-set shiftwidth=2
-let &softtabstop = &shiftwidth
-set expandtab
-
-
 " =========
 " Functions
 " =========
@@ -99,26 +100,30 @@ function! BreakHere()
   call histdel("/", -1)
 endfunction
 
-" 
 " ===========
 " Keymaps
 " ===========
 
 map <Space> :NERDTreeToggle<CR>
-map <ENTER> :Goyo<CR>
+map <Leader><ENTER> :Goyo<CR>
 map <Leader>q :noh<CR>
-
-" use Ctrl+hjkl to move between Splits
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
+nnoremap <C-p> :Files<Cr>              " fzf File Finder 
+nnoremap <C-b> :Buffer<Cr>             " fzf Buffer List
+nnoremap <C-h> <C-W>h                  " use Ctrl+hjkl to move between Splits
+nnoremap <C-j> <C-W>d
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
+inoremap kj <Esc>                      " Alternative to escape key
+xnoremap K :move '<-2<CR>gv-gv         " move selected Lines up one line 
+xnoremap J :move '>+1<CR>gv-gv         " move selected Lines down one line 
+nnoremap <C-TAB> :bnext<CR>            " SHIFT-TAB in general mode will move to text buffer
+nnoremap <C-S-TAB> :bprevious<CR>      " SHIFT-TAB will go back
+nnoremap <C-s> :w<CR>                  " Alternate way to save
+nnoremap <C-Q> :wq!<CR>                " Alternate way to quit
+nnoremap <leader>t :VimwikiToggleListItem<CR>
 
-" move selected Lines up or down one line 
-xnoremap K :move '<-2<CR>gv-gv
-xnoremap J :move '>+1<CR>gv-gv
-
-let mapleader = "," " map leader to comma
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " ===========
 " Plug
@@ -133,8 +138,7 @@ endif
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
+        \| endif
 
 call plug#begin()
 
@@ -143,8 +147,34 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'ap/vim-buftabline'
+Plug 'townk/vim-autoclose'
+Plug 'gioele/vim-autoswap'
+Plug 'mhinz/vim-startify'       
 
 call plug#end()
+
+" ===========
+" Plugin Settings
+" ===========
+"
+" enable autoswap Plugin to switch to corect tmux window
+" (install wmctrl to automatically switch to the Vim window with the open file)
+let g:autoswap_detect_tmux = 1
+
+
+let g:startify_custom_header = [
+                           \ '                                                             ', 
+         \ '   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+         \ '   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+         \ '   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+         \ '   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+         \ '   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+         \ '   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+                                 \] 
+
 
 " ===========
 " WimWiki
@@ -164,6 +194,10 @@ let g:vimwiki_list = [wiki_1]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_global_ext = 0
 
+au BufNewFile ~/Notes/diary/*.md :silent 0r !~/.config/vimwiki/bin/generate-vimwiki-diary-template '%'
+" ===========
+" Calendar
+" ===========
 function! ToggleCalendar()
   execute ":Calendar"
   if exists("g:calendar_open")
@@ -177,7 +211,8 @@ function! ToggleCalendar()
     let g:calendar_open = 1
   end
 endfunction
-:autocmd FileType vimwiki map c :call ToggleCalendar()
+
+map <leader>c :call ToggleCalendar()
 
 
 
@@ -186,5 +221,21 @@ endfunction
 " ===========
 
 colorscheme gruvbox
-" making the terminalbackground match the vim background exactly:
-highlight Normal ctermbg=NONE
+
+
+"
+" ===========
+" Temporary Stuff
+" ===========
+"
+"
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>"
+"
+"
+"
+                                                                                                                                                                                                                                                                                                                                                                                             
+
+
