@@ -18,6 +18,8 @@ alias vimconfig="nvim .config/nvim/init.vim"
 alias polybarreload="pkill -USR1 polybar"
 alias openboxconfig="nvim .config/openbox/rc.xml "
 alias openboxas="nvim .config/openbox/autostart"
+alias sxhkdconfig="nvim .config/sxhkd/sxhkdrc"
+alias sxhkdreload="pkill -usr1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'"
 
 # Applications
 alias v=nvim

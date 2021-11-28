@@ -1,7 +1,6 @@
 configuration {
  modi: "window,drun,ssh,combi";
  font: "Roboto 18";
- theme: "gruvbox-dark";
  combi-modi: "window,drun,ssh";
  }
 @import "/usr/share/rofi/themes/gruvbox-dark.rasi"

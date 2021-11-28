@@ -329,41 +329,6 @@
         <command>kfmclient openProfile filemanagement</command>
       </action>
     </keybind>
-    <keybind key="C-space">
-      <action name="Execute">
-        <command>rofi -show run </command>
-      </action>
-    </keybind>
-    <keybind key="A-r">
-      <action name="Execute">
-        <command>rofi -show run </command>
-      </action>
-    </keybind>
-    <keybind key="A-Return">
-      <action name="Execute">
-        <command>urxvtc</command>
-      </action>
-    </keybind>
-    <keybind key="S-Return">
-      <action name="Execute">
-        <command>firefox</command>
-      </action>
-    </keybind>
-    <keybind key="C-Return">
-      <action name="Execute">
-        <command>nemo</command>
-      </action>
-    </keybind>
-    <keybind key="S-C-Return">
-      <action name="Execute">
-        <command>urxvtc -e ranger</command>
-      </action>
-    </keybind>
-    <keybind key="C-A-d">
-      <action name="Execute">
-        <command>urxvt -e htop</command>
-      </action>
-    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
