@@ -54,6 +54,19 @@ export PATH="$SPICETIFY_INSTALL:$PATH"
 #path+='~/Applications/LibreSprite_7145e7aa49c6c09e18af14c86341a125.AppImage'
 #export PATH
 
+
+# fzf
+source "$HOME/.config/fzf/shell/key-bindings.zsh"
+export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden'
+export FZF_DEFAULT_OPTS='--no-height'
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
+
+export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
+
+
 # Aliases
 source ~/.config/zsh/aliases
 

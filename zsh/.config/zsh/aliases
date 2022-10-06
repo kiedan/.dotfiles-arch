@@ -15,6 +15,7 @@ alias zshreload="source ~/.zshrc"
 alias urxvtconfig="nvim ~/.Xresources"
 alias urxvtreload="xrdb ~/.Xresources"
 alias vimconfig="nvim .config/nvim/init.vim"
+alias polybarconfig="v .config/polybar/config"
 alias polybarreload="pkill -USR1 polybar"
 alias openboxconfig="nvim .config/openbox/rc.xml "
 alias openboxas="nvim .config/openbox/autostart"
@@ -22,7 +23,10 @@ alias sxhkdconfig="nvim .config/sxhkd/sxhkdrc"
 alias sxhkdreload="pkill -usr1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'"
 
 # Applications
-alias v=nvim
+alias v="nvim"
+alias vf='v $(fzf)'
+alias vimwiki="nvim ~/Nextcloud/SpaceNotes/index.md"
+alias ta="tmux attach"
 
 # Pacman
 alias pacsyu="sudo pacman -Syu"	    # update database & upgrade
@@ -36,6 +40,7 @@ alias pacrsn="sudo pacman -Rsn"      # remove package not leaving orphans
 #Yay
 alias yays="yay -S"
 alias yayss="yay -Ss"
+alias yaysyu="yay -Syu"
 
 #Tools
 alias ipscan="nmap -sP 192.168.2.0/24"

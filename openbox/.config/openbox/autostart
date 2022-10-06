@@ -2,7 +2,7 @@
 /usr/lib/polkit-1/polkit-agent-helper-1 &
 
 # Top Bar
-sh ~/.config/polybar/launch.sh &
+sh ~/.config/polybar/launch-openbox.sh &
 
 ## Desktop notification
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
