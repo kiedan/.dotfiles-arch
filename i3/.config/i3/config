@@ -11,12 +11,12 @@
 #Needed for i3-gaps
 #hide_edge_borders both
 for_window [class="^.*"] border pixel 0
-gaps inner 100
-gaps horizontal 630
+gaps inner 50
+gaps horizontal 400
 
 
 # Only enable outer gaps when there is exactly one container
-#smart_gaps inverse_outer
+smart_gaps inverse_outer
 
 ################# i3-radius #######################
 #smart_borders on
@@ -30,9 +30,9 @@ font pango:Fira Code Nerd Font 14
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up h
+set $up k
 set $down j
-set $left k
+set $left h
 set $right l
 
 # modifier variables
@@ -55,9 +55,9 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvtc
-bindsym $mod+Shift+Return exec nautilus --class scratch
-bindsym $mod+Ctrl+Return exec firefox
-bindsym $mod+Shift+Escape exec --no-startup-id urxvtc -e "htop" --class scratch
+bindsym Ctrl+Return exec nautilus --class scratch
+bindsym Shift+Return exec firefox
+bindsym $mod+Ctrl+d exec --no-startup-id urxvtc -e "htop" --class scratch
 
 
 # kill focused window
@@ -110,7 +110,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+w layout tabbed
+#bindsym $mod+Shift+w layout tabbed
 bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
@@ -120,7 +120,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -140,43 +140,43 @@ bindsym $mod+minus scratchpad show
 
 
 #Make every window float by default
-for_window [class="^.*"] floating enable
+#for_window [class="^.*"] floating enable
 
 #set specific windows to tile
-for_window [class="URxvt"] floating disable
-for_window [class="Firefox"] floating disable
-for_window [class="Org.gnome.Nautilus"] floating disable
-for_window [class="dolphin"] floating disable
+#for_window [class="URxvt"] floating disable
+#for_window [class="Firefox"] floating disable
+#for_window [class="Org.gnome.Nautilus"] floating disable
+#for_window [class="dolphin"] floating disable
 
-for_window [class="scratch"] move scratchpad border pixel 3
+#for_window [class="scratch"] move scratchpad border pixel 3
 
 
-# Assign Workspaces:i
-#ws1: Terminal
-assign [class="URxvt"] $ws1
-
-#ws2 Files
-assign [class="Org.gnome.Nautilus"] $ws2
-assign [class="dolphin"] $ws2
-
-#ws3 Browser
-assign [class="Firefox"] $ws3
-
-#ws4 Writing
-#ws5 Dev
-#ws6 Design
-for_window [class="Inkscape"] move to workspace $ws6
-
-#ws7 Video
-assign [class="kdenlive"] $ws7
-
-#ws8 Games
-assign [class="Steam"] $ws8
-#ws9 Musik
-for_window [class="Spotify"] move to workspace $ws9
-
-#ws10 OBS
-assign [class="obs"] $ws10
+## Assign Workspaces:i
+##ws1: Terminal
+#assign [class="URxvt"] $ws1
+#
+##ws2 Files
+#assign [class="Org.gnome.Nautilus"] $ws2
+#assign [class="dolphin"] $ws2
+#
+##ws3 Browser
+#assign [class="Firefox"] $ws3
+#
+##ws4 Writing
+##ws5 Dev
+##ws6 Design
+#for_window [class="Inkscape"] move to workspace $ws6
+#
+##ws7 Video
+#assign [class="kdenlive"] $ws7
+#
+##ws8 Games
+#assign [class="Steam"] $ws8
+##ws9 Musik
+#for_window [class="Spotify"] move to workspace $ws9
+#
+##ws10 OBS
+#assign [class="obs"] $ws10
 
 
 
@@ -197,31 +197,49 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# set Monitor Variables
+set $m2 DP-1
+set $m1 HDMI-1
+
+
+# Define Workspace Monitor Outputs
+
+workspace 1 output $m1
+workspace 2 output $m1
+workspace 3 output $m1
+workspace 4 output $m1
+workspace 5 output $m1
+workspace 6 output $m2
+workspace 7 output $m2
+workspace 8 output $m2
+workspace 9 output $m2
+workspace 10 output $m2
+
 
 # switch to workspace
 
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym Ctrl+1 workspace $ws1
+bindsym Ctrl+2 workspace $ws2
+bindsym Ctrl+3 workspace $ws3
+bindsym Ctrl+4 workspace $ws4
+bindsym Ctrl+5 workspace $ws5
+bindsym Ctrl+6 workspace $ws6
+bindsym Ctrl+7 workspace $ws7
+bindsym Ctrl+8 workspace $ws8
+bindsym Ctrl+9 workspace $ws9
+bindsym Ctrl+0 workspace $ws10
 
 # move focused container to workspace and jump there
-bindsym Ctrl+1 move container to workspace $ws1; workspace $ws1
-bindsym Ctrl+2 move container to workspace $ws2; workspace $ws2
-bindsym Ctrl+3 move container to workspace $ws3; workspace $ws3
-bindsym Ctrl+4 move container to workspace $ws4; workspace $ws4
-bindsym Ctrl+5 move container to workspace $ws5; workspace $ws5
-bindsym Ctrl+6 move container to workspace $ws6; workspace $ws6
-bindsym Ctrl+7 move container to workspace $ws7; workspace $ws7
-bindsym Ctrl+8 move container to workspace $ws8; workspace $ws8
-bindsym Ctrl+9 move container to workspace $ws9; workspace $ws9
-bindsym Ctrl+0 move container to workspace $ws10; workspace $ws10
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
 # move focused container to workspace in the background
 bindsym Ctrl+Shift+1 move container to workspace $ws1
@@ -236,10 +254,15 @@ bindsym Ctrl+Shift+9 move container to workspace $ws9
 bindsym Ctrl+Shift+0 move container to workspace $ws10
 
 # switching between workspaces
-# bindsym Ctrl+Tab workspace back_and_forth
 bindsym Ctrl+Left workspace prev_on_output
 bindsym Ctrl+Right workspace next_on_output
 
+
+# switching container between workspaces
+bindsym Shift+Ctrl+Left move container to workspace prev; workspace prev 
+bindsym Shift+Ctrl+Right move container to workspace next; workspace next
+#bindsym Shift+Ctrl+Left move left
+#bindsym Shift+Ctrl+Right move right
 
 # resize window (you can also use the mouse for that)
 # Resize without resize mode
@@ -327,15 +350,27 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Autostart 
 
-# start the urxvt daemon at start 
-exec_always --no-startup-id urxvtd -q -o -f
+
 # Set Desktop Wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+#exec --no-startup-id conky
+
+# start the urxvt daemon at start 
+exec_always --no-startup-id urxvtd -q -o -f
 exec --no-startup-id urxvtc -hold -e "neofetch"
-exec --no-startup-id nautilus 
-exec --no-startup-id spotify 
-exec --no-startup-id steam 
-exec --no-startup-id firefox 
+
+exec_always --no-startup-id $HOME/.config/polybar/launch-i3.sh
+
+# Applets
+exec_always --no-startup-id nm-applet 
+exec_always --no-startup-id volumeicon 
+exec_always --no-startup-id xfce4-clipman  
+exec_always --no-startup-id xfce4-power-manager 
+exec_always --no-startup-id blueman-applet 
+
+#exec --no-startup-id nautilus 
+#exec --no-startup-id firefox 
+
+
 
