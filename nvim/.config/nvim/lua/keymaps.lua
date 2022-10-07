@@ -1,5 +1,5 @@
 -- Import & assign the map() function from the utils module globally 
-Map = require("utils").map
+	Map = require("utils").map
 
 -- Remap space as leader key
 Map("n", "<Space>", "")
@@ -30,7 +30,7 @@ Map("i", "<up>", "<Esc>gk")
 
 -- center line on screen after jumping up/down
 Map("n", "<C-d>", "<C-d>zz")
-Map("n", "<C-u>", "<C-u>zz")
+Map("n", "<C-u>", "<C-d>zz")
 
 -- Tabsstops --
 Map("n", "<Tab>", ">>_")

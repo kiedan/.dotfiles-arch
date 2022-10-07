@@ -13,8 +13,6 @@ local options = {
 	expandtab = false,                        -- convert tabs to spaces
 	shiftwidth = 4,                          -- the number of spaces inserted for each indentation
 	tabstop = 4,                             -- number of spaces inserted for a tab
-	cursorline = true,                       -- highlight the current line
-	number = true,                           -- set numbered lines
 	relativenumber = true,                   -- set relative numbered lines
 	spelllang="en_us,de_de",                 -- configure Languages for Spellchecking
 	spell = true,                            -- activate spellchecking
@@ -39,7 +37,6 @@ vim.opt.wildoptions:remove('pum')
 -- show Tab Indentation
 vim.opt.list=true
 vim.opt.lcs='tab:| ,trail:-'
-
 
 
 for k, v in pairs(options) do
