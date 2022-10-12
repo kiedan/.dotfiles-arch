@@ -2,7 +2,7 @@
 alias sudo='sudo '
 alias la="ls -A --color=always"
 alias ls="ls --color=always"
-
+alias ..="cd .."
 alias ob="startx ~/.xinitrc openbox"
 alias i3="startx ~/.xinitrc i3"
 
@@ -48,3 +48,8 @@ alias ipscan="nmap -sP 192.168.2.0/24"
 
 # Files and Stuff
 alias sunote="nvim ~/.dotfiles/setupnotes/setup.md"  
+
+
+# Webdev
+alias hss="hugo server --noHTTPCache"
+alias hssd="hugo server --noHTTPCache --bind 192.168.2.120 --baseURL http://192.168.2.120"
