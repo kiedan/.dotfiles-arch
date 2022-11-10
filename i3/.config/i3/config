@@ -10,18 +10,13 @@
 
 #Needed for i3-gaps
 #hide_edge_borders both
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 gaps inner 50
 gaps horizontal 400
 
 
 # Only enable outer gaps when there is exactly one container
 smart_gaps inverse_outer
-
-################# i3-radius #######################
-#smart_borders on
-#smart_borders no_gaps
-#border_radius 15
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -37,6 +32,11 @@ set $right l
 
 # modifier variables
 set $mod Mod1
+
+# set Monitor Variables
+set $m2 DP-1
+set $m1 HDMI-1
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -55,7 +55,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvtc
-bindsym Ctrl+Return exec nautilus --class scratch
+bindsym Ctrl+Return exec pcmanfm
 bindsym Shift+Return exec firefox
 bindsym $mod+Ctrl+d exec --no-startup-id urxvtc -e "htop" --class scratch
 
@@ -100,10 +100,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+z split h
+bindsym $mod+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+z split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -197,10 +197,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# set Monitor Variables
-set $m2 DP-1
-set $m1 HDMI-1
-
 
 # Define Workspace Monitor Outputs
 
@@ -264,7 +260,7 @@ bindsym Shift+Ctrl+Right move container to workspace next; workspace next
 #bindsym Shift+Ctrl+Left move left
 #bindsym Shift+Ctrl+Right move right
 
-# resize window (you can also use the mouse for that)
+# resize window (you can also use the mouse for that: alt + right mouse)
 # Resize without resize mode
 set $resize 2
 
@@ -290,13 +286,17 @@ set $inactive-bg-color   #3c3836
 set $text-color          #ebdbb2
 set $inactive-text-color #d5c4a1
 set $urgent-bg-color     #fb4934
-
+set $indicator-color     #83a598
 
 # Window colors
-#                       border              background         text                 indicator
-client.focused          $urgent-bg-color    $bg-color          $text-color          #458588
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #458588
+#                       border              background         text                 indicator          child_border
+client.focused          $urgent-bg-color    $bg-color          $text-color          $indicator-color   $inactive-bg-color 
+client.urgent           $urgent-bg-color    $bg-color          $text-color          $indicator-color   $inactive-bg-color 
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color          $bg-color 
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color          $bg-color 
+client.placeholder      $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color          $bg-color 
 
+client.background       #ffffff
 
 # --------------------------------------------- #
 #                i3Bar config (disabled because of polybar) 
