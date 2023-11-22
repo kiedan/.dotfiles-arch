@@ -68,6 +68,6 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'luasnip' },
-    { name = 'buffer', keyword_lengh = 5 }, -- only start buffer suggestions after typing 5 characters 
+    --{ name = 'buffer', keyword_lengh = 5 }, -- only start buffer suggestions after typing 5 characters 
   },
 }

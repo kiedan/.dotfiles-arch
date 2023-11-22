@@ -37,5 +37,5 @@ vim.cmd ([[
 -- L: Will open a file and close Netrw.
 -- A: Will add File in current directory
 
-Map("n", "<Leader><Leader>", ":Lexplore<CR>")
-Map("n", "<Leader>cd", ":Lexplore %:p:h<CR>")
+vim.keymap.set("n", "<Leader><Leader>", ":Lexplore<CR>")
+vim.keymap.set("n", "<Leader>cd", ":Lexplore %:p:h<CR>")

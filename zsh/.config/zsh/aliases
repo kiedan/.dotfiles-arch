@@ -53,3 +53,11 @@ alias sunote="nvim ~/.dotfiles/setupnotes/setup.md"
 # Webdev
 alias hss="hugo server --noHTTPCache"
 alias hssd="hugo server --noHTTPCache --bind 192.168.2.120 --baseURL http://192.168.2.120"
+
+
+alias backupinfo="sh ~/scripts/backup-info.sh"
+alias fh="history | cut -c 6- | sort | uniq | fzf | tr -d '\\n' | DISPLAY=:0  xclip -selection c"
+
+alias rotatescreenr="xrandr --output HDMI-1 --rotate right"
+alias rotatescreenl="xrandr --output HDMI-1 --rotate left"
+alias rotatescreenn="xrandr --output HDMI-1 --rotate normal"

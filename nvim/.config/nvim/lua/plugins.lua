@@ -9,15 +9,14 @@ local ensure_packer = function()
 	end
 	return false
 end
-
 local packer_bootstrap = ensure_packer()
 
+---------------------------- PLUGINS TO INSTALL ----------------------------------------------
 
--- Plugins to install 
 return require('packer').startup(function(use)
+	-- Basics
 	use 'wbthomason/packer.nvim'           -- let Packer manage itself
 	use "ellisonleao/gruvbox.nvim"         -- Colorscheme
-
 	use 'nvim-lua/plenary.nvim'            -- required by Telescope
 	use {'nvim-telescope/telescope.nvim', tag = '0.1.0',}      -- fuzzyfinder
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}  -- better highlighting rzx
@@ -25,8 +24,8 @@ return require('packer').startup(function(use)
 	--  LSP Setup and configuration (-> lsp-config.lua)
 	use {"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",}
-	
+		"neovim/nvim-lspconfig",
+		}
 	-- Autocompletion Setup (->autocomplete-config-lua)
 	use {'hrsh7th/nvim-cmp',         -- Autocompletion plugin
 		'hrsh7th/cmp-nvim-lsp',      -- LSP source for nvim-cmp
@@ -36,13 +35,26 @@ return require('packer').startup(function(use)
 		'hrsh7th/cmp-path',      -- autocomplete File Paths
 		'hrsh7th/cmp-nvim-lua',      -- autocomplete special nvim lua stuff
 	}
+	-- Notetaking / Writing
 	use 'vimwiki/vimwiki'
 	use 'junegunn/goyo.vim'
 
+	-- Optionals
+	use 'voldikss/vim-floaterm'
+	use 'norcalli/nvim-colorizer.lua'
+	use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+-----------------------------------------------------------------------------------------------
+
+	-- Development
+	--use '~/Development/Plugins/YoYo.nvim/'
+	--use '~/Development/Plugins/asciifonts.nvim/'
+	--require 'asciifonts'
+-----------------------------------------------------------------------------------------------
+
+	-- Automatically set up your configuration after cloning packer.nvim (Put this at the end after all plugins)
+	if packer_bootstrap then
+		require('packer').sync()
+	end
+
 end)

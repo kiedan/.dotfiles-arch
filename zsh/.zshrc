@@ -2,6 +2,7 @@
 fpath=(~/.config/zsh $fpath)
 autoload -Uz prompt_purification_setup && prompt_purification_setup
 
+neofetch
 
 SPACESHIP_PROMPT_SEPERATE_LINE=false
 SPACESHIP_CHAR_SYMBOL=❱❱❱
@@ -48,8 +49,10 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 #Path
-export SPICETIFY_INSTALL="/home/dan/spicetify-cli"
-export PATH="$SPICETIFY_INSTALL:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/Applications:$PATH"
+export PATH="/var/lib/flatpak/exports/bin:$PATH"
 
 #path+='~/Applications/LibreSprite_7145e7aa49c6c09e18af14c86341a125.AppImage'
 #export PATH

@@ -10,7 +10,7 @@ require("mason-lspconfig").setup({
 		"gopls",    -- Go
 		"emmet_ls", -- Emmet html
 		"html",
-		"marksman", -- Markdown
+		--"marksman", -- Markdown
 		"phpactor", -- PHP
 		"taplo",    -- Toml
 		"yamlls",   -- Yaml
@@ -51,13 +51,32 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+require('lspconfig')['sumneko_lua'].setup{
+	--cmd = {'/usr/bin/lua-language-server'},
+	cmd = {'/usr/bin/lua'},
+	settings = {
+		Lua = {
+		  diagnostics = {
+			-- Get the language server to recognize the `vim` global
+			globals = {'vim'},
+		  },
+		},
+	},
+}
+
 -- automatically attach installed Servers
 require("mason-lspconfig").setup_handlers({
-  function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {
-		on_attach = on_attach,
-	}
-  end,
+	function (server_name) -- default handler (optional)
+		require("lspconfig")[server_name].setup {
+			on_attach = on_attach,
+		}
+		require("lspconfig")["sumneko_lua"].setup({
+			on_attach = on_attach,
+			settings = { Lua = { diagnostics = { globals = {
+				'vim', -- stops warn messages about "undefined global 'vim'"
+			}}}}
+		})
+	end,
 })
 
 -- dont show diagnostic error text inline 
